@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
+import { request } from '../../../request'
+
 export class SignIn extends Component {
 
   handleSubmit = (e) => {
@@ -34,7 +36,7 @@ export class SignIn extends Component {
 export class SignInContainer extends Component {
 
   componentDidMount() {
-    console.log(this.props.user)
+    request.get('companies').then(e => console.log(e)).catch(e => console.log(e)).then(e => console.log(e))
   }
 
   handleSubmit = (email, password) => {

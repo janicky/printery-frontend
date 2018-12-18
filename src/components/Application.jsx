@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter } from 'react-router-dom'
-
+import { connect } from 'react-redux'
 
 // Import layouts
 import GuestLayout from './layouts/GuestLayout'
@@ -13,7 +13,7 @@ import SignInContainer from './pages/SignIn/SignIn'
 // Import stylesheets
 import './Application.css'
 
-export default class Application extends Component {
+export class Application extends Component {
   render() {
     return (
       <BrowserRouter>
@@ -25,3 +25,13 @@ export default class Application extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  user: state.user
+})
+
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Application)
