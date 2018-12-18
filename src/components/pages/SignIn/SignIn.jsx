@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 export class SignIn extends Component {
   render() {
     return (
-      <div>
-        ...sign_in...
+      <div className="d-flex p-2 justify-content-center align-items-center h-100">
+        ...test...
       </div>
     )
   }
@@ -13,11 +13,7 @@ export class SignIn extends Component {
 
 export class SignInContainer extends Component {
   render() {
-    return (
-      <div>
-        <SignIn />
-      </div>
-    )
+    return <SignIn />
   }
 }
 
