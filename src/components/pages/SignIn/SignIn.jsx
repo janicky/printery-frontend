@@ -26,15 +26,22 @@ export class SignIn extends Component {
 }
 
 export class SignInContainer extends Component {
+
+  componentDidMount() {
+    console.log(this.props.user)
+  }
+
   render() {
     return <SignIn />
   }
 }
 
 
-const mapStateToProps = (state) => ({
-  
-})
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
 
 const mapDispatchToProps = {
   
