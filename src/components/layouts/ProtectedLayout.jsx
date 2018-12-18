@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect, withRouter } from 'react-router-dom'
 
 // Import modules
 import FullscreenLoading from '../modules/FullscreenLoading'
@@ -39,4 +39,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(ProtectedLayout)
+export default withRouter(connect(mapStateToProps)(ProtectedLayout))

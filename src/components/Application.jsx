@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 // Import redux actions
@@ -52,8 +52,10 @@ export class Application extends Component {
     return (
       <BrowserRouter>
         <div className="h-100">
-          <ProtectedLayout exact path="/" component={Home} />
-          <GuestLayout exact path="/login" component={SignInContainer} />
+          <Switch>
+            <ProtectedLayout exact path="/" component={Home} />
+            <GuestLayout exact path="/login" component={SignInContainer} />
+          </Switch>
         </div>
       </BrowserRouter>
     )
