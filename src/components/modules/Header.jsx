@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, NavLink, withRouter } from 'react-router-dom'
 
 import {
   Container,
@@ -9,7 +9,6 @@ import {
   NavbarToggler,
   Nav,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -53,26 +52,52 @@ export class Header extends Component {
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav navbar>
                 <NavItem>
-                  <NavLink href="/components/">Components</NavLink>
+                  <NavLink exact to="/" className="nav-link">
+                    <FontAwesomeIcon icon={['fas', 'home']} /> Przegląd
+                  </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                  <NavLink exact to="/orders" className="nav-link">
+                    <FontAwesomeIcon icon={['fas', 'folder']} /> Zlecenia
+                  </NavLink>
                 </NavItem>
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret>
-                    Options
+                    <FontAwesomeIcon icon={['fas', 'network-wired']} /> Produkcja
                   </DropdownToggle>
                   <DropdownMenu right>
-                    <DropdownItem>
-                      Option 1
-                    </DropdownItem>
-                    <DropdownItem>
-                      Option 2
-                    </DropdownItem>
+                    <NavLink exact to="/production/machines" className="dropdown-item">
+                      <FontAwesomeIcon icon={['fas', 'network-wired']} className="mr-1" /> Maszyny
+                    </NavLink>
+                    <NavLink exact to="/production/operations" className="dropdown-item">
+                      <FontAwesomeIcon icon={['fas', 'microchip']} className="mr-1" /> Procesy
+                    </NavLink>
                     <DropdownItem divider />
-                    <DropdownItem>
-                      Reset
-                    </DropdownItem>
+                    <NavLink exact to="/orders" className="dropdown-item">
+                      <FontAwesomeIcon icon={['fas', 'chart-bar']} className="mr-1" /> Statystyki
+                    </NavLink>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+                <NavItem>
+                  <NavLink exact to="/machines" className="nav-link">
+                    <FontAwesomeIcon icon={['fas', 'archive']} /> WZ
+                  </NavLink>
+                </NavItem>
+                <UncontrolledDropdown nav inNavbar>
+                  <DropdownToggle nav caret>
+                    Zarządzanie
+                  </DropdownToggle>
+                  <DropdownMenu right>
+                    <NavLink exact to="/production/machines" className="dropdown-item">
+                      <FontAwesomeIcon icon={['fas', 'chart-line']} className="mr-1" /> Raporty
+                    </NavLink>
+                    <NavLink exact to="/production/operations" className="dropdown-item">
+                      <FontAwesomeIcon icon={['fas', 'user-tie']} className="mr-1" /> Pracownicy
+                    </NavLink>
+                    <DropdownItem divider />
+                    <NavLink exact to="/orders" className="dropdown-item">
+                      <FontAwesomeIcon icon={['far', 'question-circle']} className="mr-1" /> Informacje
+                    </NavLink>
                   </DropdownMenu>
                 </UncontrolledDropdown>
               </Nav>

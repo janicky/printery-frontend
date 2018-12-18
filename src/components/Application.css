@@ -13,3 +13,7 @@ body, html, #root {
   z-index: 9999999;
   color: #097af9;
 }
+
+.nav-item .svg-inline--fa {
+  opacity: .5;
+}
