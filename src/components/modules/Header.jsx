@@ -20,6 +20,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // Import redux actions
 import { userUnauthorized } from '../../actions/user'
 
+// Import logo
+import logo from '../../images/logo.png'
+
 export class Header extends Component {
 
   state = {
@@ -45,8 +48,8 @@ export class Header extends Component {
       <div>
         <Navbar color="dark" dark expand="md">
           <Container>
-            <Link to="/">
-              <span className="navbar-brand">printery</span>
+            <Link to="/" className="mr-4">
+              <img src={logo} alt="Logo" width="100px" />
             </Link>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
