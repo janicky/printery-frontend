@@ -4,9 +4,15 @@ import Application from './components/Application'
 import * as serviceWorker from './serviceWorker'
 import 'bootstrap/dist/css/bootstrap.css'
 
-ReactDOM.render(<Application />, document.getElementById('root'));
+import { store } from './store'
+import { Provider } from 'react-redux'
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+ReactDOM.render(
+  <Provider store={store}>
+    <Application />
+  </Provider>, 
+  document.getElementById('root')
+);
+
+
 serviceWorker.unregister();
