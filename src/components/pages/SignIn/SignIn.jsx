@@ -6,7 +6,7 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
 export class SignIn extends Component {
   render() {
     return (
-      <div className="p-3 border rounded shadow-lg bg-white">
+      <div className="p-3 rounded shadow-lg bg-white">
         <Form>
           <FormGroup>
             <Label for="email">Email</Label>
