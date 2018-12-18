@@ -76,7 +76,7 @@ export class Header extends Component {
                       <FontAwesomeIcon icon={['fas', 'microchip']} className="mr-1" /> Procesy
                     </NavLink>
                     <DropdownItem divider />
-                    <NavLink exact to="/orders" className="dropdown-item">
+                    <NavLink exact to="/production/stats" className="dropdown-item">
                       <FontAwesomeIcon icon={['fas', 'chart-bar']} className="mr-1" /> Statystyki
                     </NavLink>
                   </DropdownMenu>
@@ -91,14 +91,14 @@ export class Header extends Component {
                     Zarządzanie
                   </DropdownToggle>
                   <DropdownMenu right>
-                    <NavLink exact to="/production/machines" className="dropdown-item">
+                    <NavLink exact to="/reports" className="dropdown-item">
                       <FontAwesomeIcon icon={['fas', 'chart-line']} className="mr-1" /> Raporty
                     </NavLink>
-                    <NavLink exact to="/production/operations" className="dropdown-item">
+                    <NavLink exact to="/users" className="dropdown-item">
                       <FontAwesomeIcon icon={['fas', 'user-tie']} className="mr-1" /> Pracownicy
                     </NavLink>
                     <DropdownItem divider />
-                    <NavLink exact to="/orders" className="dropdown-item">
+                    <NavLink exact to="/info" className="dropdown-item">
                       <FontAwesomeIcon icon={['far', 'question-circle']} className="mr-1" /> Informacje
                     </NavLink>
                   </DropdownMenu>
