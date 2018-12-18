@@ -5,11 +5,16 @@ import { Route, Redirect, withRouter } from 'react-router-dom'
 
 // Import modules
 import FullscreenLoading from '../modules/FullscreenLoading'
+import Header from '../modules/Header'
 
 export class ProtectedLayout extends Component {
 
   state = {
     loaded: false
+  }
+
+  componentDidMount() {
+    this.setState({ loaded: this.props.user.loaded })
   }
 
   componentWillReceiveProps(nextProps) {
@@ -28,7 +33,12 @@ export class ProtectedLayout extends Component {
       return <Redirect to="/login" />
     }
     return (
-      <Route {...this.props} />
+      <main>
+        <Header />
+        <div className="container">
+          <Route {...this.props} />
+        </div>
+      </main>
     )
   }
 }

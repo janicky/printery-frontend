@@ -12,6 +12,10 @@ export class GuestLayout extends Component {
     loaded: false
   }
 
+  componentDidMount() {
+    this.setState({ loaded: this.props.user.loaded })
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.user.loaded !== this.state.loaded) {
       this.setState({ loaded: nextProps.user.loaded })
