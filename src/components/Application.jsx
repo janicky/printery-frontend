@@ -5,13 +5,14 @@ import { BrowserRouter } from 'react-router-dom'
 import GuestLayout from './layouts/GuestLayout'
 
 // Import pages
-import Home from './pages/Home/Home'
+// import Home from './pages/Home/Home'
+import SignInContainer from './pages/SignIn/SignIn'
 
 export default class Application extends Component {
   render() {
     return (
       <BrowserRouter>
-        <GuestLayout exact path="/" component={Home} />
+        <GuestLayout exact path="/" component={SignInContainer} />
       </BrowserRouter>
     )
   }
