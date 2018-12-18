@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
 export class SignIn extends Component {
   render() {
