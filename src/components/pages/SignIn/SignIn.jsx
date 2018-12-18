@@ -48,6 +48,7 @@ export class SignInContainer extends Component {
     request.post('oauth/token', { email, password, grant_type: 'password' })
       .then(response => {
         localStorage.setItem('auth', response.data.access_token)
+        request.defaults.headers.common['Authorization'] = `Bearer ${response.data.access_token}`
         request.get('me')
           .then(me => {
             this.props.userAuthorized(me.data)
