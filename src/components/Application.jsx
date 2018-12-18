@@ -12,6 +12,7 @@ import ProtectedLayout from './layouts/ProtectedLayout'
 // Import pages
 import Home from './pages/Home/Home'
 import SignInContainer from './pages/SignIn/SignIn'
+import UsersContainer from './pages/Users/Users'
 
 // Import stylesheets
 import './Application.css'
@@ -55,6 +56,7 @@ export class Application extends Component {
           <Switch>
             <ProtectedLayout exact path="/" component={Home} />
             <GuestLayout exact path="/login" component={SignInContainer} />
+            <ProtectedLayout exact path="/users" component={UsersContainer} />
           </Switch>
         </div>
       </BrowserRouter>
