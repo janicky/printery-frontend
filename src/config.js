@@ -1,15 +1,8 @@
-const base = 'http://192.158.1.10:3000'
-
-class Endpoint {
-  url = base + '/api'
-
-  constructor(endpoint) {
-    this.url += endpoint
-  }
-}
-
-const config = {
+export const config = {
   api: {
-    oauth: new Endpoint('/oauth')
+    url: {
+      development: 'http://192.168.1.10:3001/api',
+      production: 'https://...'
+    }
   }
 }
