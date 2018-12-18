@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import GuestLayout from './layouts/GuestLayout'
 
 // Import pages
-import Home from './pages/Home'
+import Home from './pages/Home/Home'
 
 export default class Application extends Component {
   render() {
