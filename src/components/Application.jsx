@@ -19,6 +19,13 @@ import './Application.css'
 // Import axios
 import { request } from '../request'
 
+// Import font awesome
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+
+library.add(far, fas)
+
 export class Application extends Component {
 
   componentWillMount() {
