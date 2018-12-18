@@ -39,8 +39,8 @@ export class GuestLayout extends Component {
 
     return (
       <div className="h-100 d-flex p-2 justify-content-center align-items-center bg-light flex-column">
-        <div className="p-5">
-          <img src={logo} alt="Logo" className="img-responsive" width="300"/>
+        <div className="p-4">
+          <img src={logo} alt="Logo" className="img-responsive" width="200"/>
         </div>
         <Route {...this.props} />
       </div>
