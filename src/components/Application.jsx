@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 // Import redux actions
-import { userAuthorized } from '../actions/user'
+import { userAuthorized, userUnauthorized } from '../actions/user'
 
 // Import layouts
 import GuestLayout from './layouts/GuestLayout'
@@ -39,9 +39,12 @@ export class Application extends Component {
           this.props.userAuthorized(response.data)
         })
         .catch((e) => {
+          this.props.userUnauthorized()
           localStorage.removeItem('auth')
           alert('Sesja wygasła, nastąpiło wylogowanie')
         })
+    } else {
+      this.props.userUnauthorized()
     }
   }
 
@@ -62,7 +65,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  userAuthorized
+  userAuthorized, userUnauthorized
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Application)
