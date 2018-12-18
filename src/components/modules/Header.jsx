@@ -86,6 +86,11 @@ export class Header extends Component {
                     <FontAwesomeIcon icon={['fas', 'archive']} /> WZ
                   </NavLink>
                 </NavItem>
+                <NavItem>
+                  <NavLink exact to="/companies" className="nav-link">
+                    <FontAwesomeIcon icon={['fas', 'users']} /> Klienci
+                  </NavLink>
+                </NavItem>
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret>
                     Zarządzanie
