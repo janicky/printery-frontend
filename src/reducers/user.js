@@ -18,11 +18,6 @@ export const user = (state = initialState, action) => {
         loaded: true,
         user: null
       }
-    case 'USER_SIGNED_IN':
-      return {
-        logged: true,
-        user: action.user
-      }
     default:
       return state
   }

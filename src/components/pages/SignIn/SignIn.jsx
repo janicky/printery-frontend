@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Button, Form, FormGroup, Label, Input, FormFeedback } from 'reactstrap'
 
 import { request } from '../../../request'
+
+// Import redux actions
+import { userAuthorized } from '../../../actions/user'
 
 export class SignIn extends Component {
 
@@ -13,19 +16,21 @@ export class SignIn extends Component {
   }
 
   render() {
+    const { error } = this.props
     return (
       <div className="p-3 rounded shadow-lg bg-white">
         <Form>
           <FormGroup>
             <Label for="email">Email</Label>
-            <Input type="email" name="email" id="email" placeholder="Wprowadź adres email" innerRef={e => this.email = e} />
+            <Input invalid={error} type="email" name="email" id="email" placeholder="Wprowadź adres email" innerRef={e => this.email = e} />
           </FormGroup>
           <FormGroup>
             <Label for="password">Hasło</Label>
-            <Input type="password" name="password" id="password" placeholder="Wprowadź hasło" innerRef={e => this.password = e} />
+            <Input invalid={error} type="password" name="password" id="password" placeholder="Wprowadź hasło" innerRef={e => this.password = e} />
+            <FormFeedback>Email lub hasło są niepoprawne.</FormFeedback>
           </FormGroup>
           <div className="d-flex justify-content-center">
-            <Button onClick={this.handleSubmit}>Zaloguj się</Button>
+            <Button onClick={this.handleSubmit} type="submit">Zaloguj się</Button>
           </div>
         </Form>
       </div>
@@ -35,16 +40,25 @@ export class SignIn extends Component {
 
 export class SignInContainer extends Component {
 
-  componentDidMount() {
-    request.get('companies').then(e => console.log(e)).catch(e => console.log(e)).then(e => console.log(e))
+  state = {
+    error: false
   }
 
   handleSubmit = (email, password) => {
-    alert(email)
+    request.post('oauth/token', { email, password, grant_type: 'password' })
+      .then(response => {
+        localStorage.setItem('auth', response.data.access_token)
+        request.get('me')
+          .then(me => {
+            this.props.userAuthorized(me.data)
+          })
+      })
+      .catch(() => this.setState({ error: true }))
   }
 
   render() {
-    return <SignIn onSubmit={this.handleSubmit} />
+    const { error } = this.state
+    return <SignIn onSubmit={this.handleSubmit} error={error} />
   }
 }
 
@@ -56,7 +70,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-  
+  userAuthorized
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignInContainer)
