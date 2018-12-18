@@ -3,6 +3,9 @@ import { connect } from 'react-redux'
 
 import { Route, Redirect } from 'react-router-dom'
 
+// Import modules
+import FullscreenLoading from '../modules/FullscreenLoading'
+
 export class ProtectedLayout extends Component {
 
   state = {
@@ -19,7 +22,7 @@ export class ProtectedLayout extends Component {
     const { loaded } = this.state
     const { user} = this.props
     if (!loaded) {
-      return <div></div>
+      return <FullscreenLoading />
     }
     if (!user.logged) {
       return <Redirect to="/login" />
@@ -36,8 +39,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = {
-  
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProtectedLayout)
+export default connect(mapStateToProps)(ProtectedLayout)
