@@ -13,6 +13,11 @@ import { setUsers } from '../../../actions/users'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Users extends Component {
+
+  handleDelete = (id) => {
+    this.props.onDelete(id)
+  }
+
   render() {
     const { users } = this.props
     if (users.length === 0) {
@@ -36,7 +41,7 @@ class Users extends Component {
             </tr>
           </thead>
           <tbody>
-            {users.map(user => <UserRow key={user.id} {...user} />)}
+            {users.map(user => <UserRow key={user.id} {...user} onDelete={this.handleDelete} />)}
           </tbody>
         </Table>
       </div>
@@ -53,10 +58,17 @@ export class UsersContainer extends Component {d
       })
   }
 
+  handleDelete = (id) => {
+    var accept = window.confirm(`Czy aby na pewno chcesz usunąć pracownika o id ${id}?`)
+    if (accept) {
+      
+    }
+  }
+
   render() {
     const { users } = this.props
     return (
-      <Users users={users} />
+      <Users users={users} onDelete={this.handleDelete} />
     )
   }
 }

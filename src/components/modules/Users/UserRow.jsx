@@ -4,6 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from 'reactstrap'
 
 export default class UserRow extends Component {
+
+  handleDelete = (id) => {
+    this.props.onDelete(id)
+  }
+
   render() {
     const { id, first_name, last_name, email, admin } = this.props
     return (
@@ -17,7 +22,7 @@ export default class UserRow extends Component {
           {!admin && <FontAwesomeIcon icon={['fas', 'times']} className="text-secondary" />}
         </td>
         <td className="text-center">
-          <Button size="sm" color="danger" disabled={admin}>
+          <Button size="sm" color="danger" disabled={admin} onClick={() => this.handleDelete(id)}>
             <FontAwesomeIcon icon={['fas', 'trash-alt']} />
           </Button>
         </td>
