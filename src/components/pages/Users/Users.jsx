@@ -5,21 +5,26 @@ import { request } from '../../../request'
 
 // Import modules
 import EmptyState from '../../modules/EmptyState'
+import UserRow from '../../modules/Users/UserRow'
 
 // Import redux actions
 import { setUsers } from '../../../actions/users'
 
 class Users extends Component {
   render() {
+    const { users } = this.props
+    if (users.length === 0) {
+      return <EmptyState icon={['fas', 'users']} title="Brak pracowników" message="Ale jeszcze może będą..." />
+    } 
     return (
       <div>
-        <EmptyState icon={['fas', 'users']} title="Brak pracowników" message="Ale jeszcze może będą..." />
+        {users.map(user => <UserRow key={user.id} {...user} />)}
       </div>
     )
   }
 }
 
-export class UsersContainer extends Component {
+export class UsersContainer extends Component {d
 
   componentDidMount() {
     request.get('users')
