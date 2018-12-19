@@ -1,14 +1,69 @@
 import React, { Component } from 'react'
 
+import { Row, Col } from 'reactstrap'
+
 // Import modules
 import EmptyState from '../../modules/EmptyState'
 
-export default class Home extends Component {
+import { request } from '../../../request';
+
+export class Home extends Component {
   render() {
+    const { count } = this.props
     return (
       <div>
-        <EmptyState />
+        <Row>
+          <Col>
+            <Row>
+              <Col className="bg-secondary m-1 p-4 text-white text-center rounded shadow-lg">
+                <div className="display-4">{count.not_started}</div>
+                <small>Nierozpoczętych zleceń</small>
+              </Col>
+              <Col className="bg-primary m-1 p-4 text-white text-center rounded shadow-lg">
+                <div className="display-4">{count.in_progress}</div>
+                <small>Zleceń w trakcie realizacji</small>
+              </Col>
+            </Row>
+            <Row>
+              <Col className="bg-success m-1 p-4 text-white text-center rounded shadow-lg">
+                <div className="display-4">{count.finished}</div>
+                <small>Ukończonych zleceń</small>
+              </Col>
+              <Col className="bg-dark m-1 p-4 text-white text-center rounded shadow-lg">
+                <div className="display-4">{count.canceled}</div>
+                <small>Anulowanych zleceń</small>
+              </Col>
+            </Row>
+          </Col>
+          <Col></Col>
+        </Row>
       </div>
     )
+  }
+}
+
+export default class HomeContainer extends Component {
+
+  state = {
+    count: {
+      not_started: 0,
+      in_progress: 0,
+      finished: 0,
+      canceled: 0
+    }
+  }
+
+  componentDidMount() {
+    request.get('dashboard')
+      .then(response => {
+        this.setState({
+          count: response.data.count
+        })
+      })
+  }
+
+  render() {
+    const { count } = this.state
+    return <Home count={count} />
   }
 }
