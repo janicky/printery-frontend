@@ -15,6 +15,11 @@ import CompanyRow from '../../modules/Companies/CompanyRow'
 import { Table, Row, Col } from 'reactstrap'
 
 class Companies extends Component {
+
+  handleDelete = (id) => {
+    this.props.onDelete(id)
+  }
+
   render() {
     const { companies, user } = this.props
     if (companies.length === 0) {
@@ -61,10 +66,23 @@ export class CompaniesContainer extends Component {
       .then(response => this.props.setCompanies(response.data))
   }
 
+  handleDelete = (id) => {
+    var accept = window.confirm(`Czy aby na pewno chcesz usunąć klienta o id ${id}?`)
+    if (accept) {
+      request.delete(`companies/${id}`)
+        .then(() => {
+          this.props.deleteCompany(id)
+        })
+        .catch(() => {
+          alert('Nie udało się usunąć klienta')
+        })
+    }
+  }
+
   render() {
     const { companies, user } = this.props
     return (
-      <Companies companies={companies} user={user} />
+      <Companies companies={companies} user={user} onDelete={this.handleDelete} />
     )
   }
 }

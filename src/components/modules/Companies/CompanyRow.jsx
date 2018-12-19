@@ -5,6 +5,11 @@ import { Link } from 'react-router-dom'
 import { Button } from 'reactstrap'
 
 export default class CompanyRow extends Component {
+
+  handleDelete = (id) => {
+    this.props.onDelete(id)
+  }
+
   render() {
     const { id, name, address, admin } = this.props
     return (
