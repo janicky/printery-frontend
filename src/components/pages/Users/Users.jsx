@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Table } from 'reactstrap'
 
 import { request } from '../../../request'
 
@@ -9,6 +10,7 @@ import UserRow from '../../modules/Users/UserRow'
 
 // Import redux actions
 import { setUsers } from '../../../actions/users'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Users extends Component {
   render() {
@@ -17,8 +19,24 @@ class Users extends Component {
       return <EmptyState icon={['fas', 'users']} title="Brak pracowników" message="Ale jeszcze może będą..." />
     } 
     return (
-      <div>
-        {users.map(user => <UserRow key={user.id} {...user} />)}
+      <div className="shadow-lg rounded bg-white p-4">
+        <h2 className="mb-3">
+          <FontAwesomeIcon icon={['fas', 'users']} className="text-secondary mr-3" />
+          Pracownicy
+        </h2>
+        <Table bordered>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Imię</th>
+              <th>Nazwisko</th>
+              <th>Adres e-mail</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map(user => <UserRow key={user.id} {...user} />)}
+          </tbody>
+        </Table>
       </div>
     )
   }
