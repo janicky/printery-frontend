@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import { Row, Col } from 'reactstrap'
 
 // Import modules
-import EmptyState from '../../modules/EmptyState'
 import OrderBadge from '../../modules/Orders/OrderBadge'
 
 import { request } from '../../../request';
@@ -42,6 +41,7 @@ export class Home extends Component {
             <div>
               {orders.map(order => <OrderBadge {...order} />)}
             </div>
+            {count.in_progress > orders.length && <small className="p-2 text-secondary">oraz {count.in_progress - orders.length} innych, nowszych zleceń w trakcie realizacji</small> }
           </Col>
         </Row>
       </div>
