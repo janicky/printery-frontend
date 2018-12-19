@@ -1,12 +1,31 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-export class UsersContainer extends Component {
+import { request } from '../../../request'
+
+// Import modules
+import EmptyState from '../../modules/EmptyState'
+
+class Users extends Component {
   render() {
     return (
       <div>
-        ...users...
+        <EmptyState />
       </div>
+    )
+  }
+}
+
+export class UsersContainer extends Component {
+
+  componentDidMount() {
+    request.get('users')
+      .then(response => console.log(response))
+  }
+
+  render() {
+    return (
+      <Users />
     )
   }
 }
