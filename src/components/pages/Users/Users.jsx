@@ -9,7 +9,7 @@ import EmptyState from '../../modules/EmptyState'
 import UserRow from '../../modules/Users/UserRow'
 
 // Import redux actions
-import { setUsers } from '../../../actions/users'
+import { setUsers, deleteUser } from '../../../actions/users'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Users extends Component {
@@ -61,7 +61,7 @@ export class UsersContainer extends Component {d
   handleDelete = (id) => {
     var accept = window.confirm(`Czy aby na pewno chcesz usunąć pracownika o id ${id}?`)
     if (accept) {
-      
+      this.props.deleteUser(id)
     }
   }
 
@@ -78,7 +78,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  setUsers
+  setUsers, deleteUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
