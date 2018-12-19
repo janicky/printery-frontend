@@ -25,12 +25,13 @@ class Users extends Component {
           Pracownicy
         </h2>
         <Table bordered>
-          <thead>
+          <thead className="thead-dark">
             <tr>
               <th>#</th>
               <th>Imię</th>
               <th>Nazwisko</th>
               <th>Adres e-mail</th>
+              <th>Admin</th>
             </tr>
           </thead>
           <tbody>
