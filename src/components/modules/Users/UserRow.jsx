@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { Button } from 'reactstrap'
+
 export default class UserRow extends Component {
   render() {
     const { id, first_name, last_name, email, admin } = this.props
@@ -13,6 +15,11 @@ export default class UserRow extends Component {
         <td className="text-center">
           {admin && <FontAwesomeIcon icon={['fas', 'check']} className="text-primary" />}
           {!admin && <FontAwesomeIcon icon={['fas', 'times']} className="text-secondary" />}
+        </td>
+        <td className="text-center">
+          <Button size="sm" color="danger" disabled={admin}>
+            <FontAwesomeIcon icon={['fas', 'trash-alt']} />
+          </Button>
         </td>
       </tr>
     )

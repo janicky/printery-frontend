@@ -32,6 +32,7 @@ class Users extends Component {
               <th>Nazwisko</th>
               <th>Adres e-mail</th>
               <th>Admin</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
