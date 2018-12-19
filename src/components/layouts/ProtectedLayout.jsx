@@ -35,7 +35,7 @@ export class ProtectedLayout extends Component {
     return (
       <main className="bg-light h-100">
         <Header />
-        <div className="container pt-5">
+        <div className="container py-4">
           <Route {...this.props} />
         </div>
       </main>
