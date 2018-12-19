@@ -10,7 +10,7 @@ class Users extends Component {
   render() {
     return (
       <div>
-        <EmptyState />
+        <EmptyState icon={['fas', 'users']} title="Brak pracowników" message="Ale jeszcze może będą..." />
       </div>
     )
   }
