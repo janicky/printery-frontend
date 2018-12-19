@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { request } from '../../../request'
@@ -11,7 +12,7 @@ import EmptyState from '../../modules/EmptyState';
 // Import modules
 import CompanyRow from '../../modules/Companies/CompanyRow'
 
-import { Table } from 'reactstrap'
+import { Table, Row, Col } from 'reactstrap'
 
 class Companies extends Component {
   render() {
@@ -22,10 +23,19 @@ class Companies extends Component {
 
     return (
       <div className="shadow-lg rounded bg-white p-4">
-        <h2 className="mb-3">
-          <FontAwesomeIcon icon={['fas', 'users']} className="text-secondary mr-3" />
-          Klienci
-        </h2>
+        <Row>
+          <Col className="mb-3">
+            <h2>
+              <FontAwesomeIcon icon={['fas', 'users']} className="text-secondary mr-3" />
+              Klienci
+            </h2>
+          </Col>
+          <Col className="text-right">
+            <Link to="/companies/add" className="btn btn-success">
+              <FontAwesomeIcon icon={['fas', 'plus']} className="mr-1" /> Dodaj nowego klienta
+            </Link>
+          </Col>
+        </Row>
         <Table bordered>
           <thead className="thead-dark">
             <tr>
