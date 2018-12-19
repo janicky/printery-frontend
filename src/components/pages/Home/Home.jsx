@@ -4,12 +4,13 @@ import { Row, Col } from 'reactstrap'
 
 // Import modules
 import EmptyState from '../../modules/EmptyState'
+import OrderBadge from '../../modules/Orders/OrderBadge'
 
 import { request } from '../../../request';
 
 export class Home extends Component {
   render() {
-    const { count } = this.props
+    const { count, orders } = this.props
     return (
       <div>
         <Row>
@@ -35,7 +36,13 @@ export class Home extends Component {
               </Col>
             </Row>
           </Col>
-          <Col></Col>
+          <Col className="p-4 bg-white shadow-lg m-1 rounded">
+            <h5>Zlecenia w trakcie realizacji</h5>
+            <hr/>
+            <div>
+              {orders.map(order => <OrderBadge {...order} />)}
+            </div>
+          </Col>
         </Row>
       </div>
     )
@@ -45,6 +52,7 @@ export class Home extends Component {
 export default class HomeContainer extends Component {
 
   state = {
+    orders: [],
     count: {
       not_started: 0,
       in_progress: 0,
@@ -57,13 +65,14 @@ export default class HomeContainer extends Component {
     request.get('dashboard')
       .then(response => {
         this.setState({
+          orders: response.data.orders,
           count: response.data.count
         })
       })
   }
 
   render() {
-    const { count } = this.state
-    return <Home count={count} />
+    const { count, orders } = this.state
+    return <Home count={count} orders={orders} />
   }
 }
