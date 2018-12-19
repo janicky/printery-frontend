@@ -61,7 +61,11 @@ export class UsersContainer extends Component {d
   handleDelete = (id) => {
     var accept = window.confirm(`Czy aby na pewno chcesz usunąć pracownika o id ${id}?`)
     if (accept) {
-      this.props.deleteUser(id)
+      request.delete(`users/${id}`)
+        .then(() => {
+          this.props.deleteUser(id)
+        })
+        .catch(() => alert('Nie udało się usunąć użytkownika'))
     }
   }
 
