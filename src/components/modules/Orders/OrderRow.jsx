@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import Status from '../../modules/Orders/Status'
+
 export default class OrderRow extends Component {
   render() {
     const { id, company, description, price, count, deadline, status } = this.props
@@ -19,7 +21,9 @@ export default class OrderRow extends Component {
           </span>
         </td>
         <td>{deadline}</td>
-        <td>{status}</td>
+        <td>
+          <Status status={status} />
+        </td>
       </tr>
     )
   }
