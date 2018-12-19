@@ -33,7 +33,7 @@ export class ProtectedLayout extends Component {
       return <Redirect to="/login" />
     }
     return (
-      <main>
+      <main className="bg-light h-100">
         <Header />
         <div className="container pt-5">
           <Route {...this.props} />
