@@ -16,7 +16,7 @@ import { Table, Row, Col } from 'reactstrap'
 
 class Companies extends Component {
   render() {
-    const { companies } = this.props
+    const { companies, user } = this.props
     if (companies.length === 0) {
       return <EmptyState icon={['fas', 'users']} title="Brak klientów" message="Ale jeszcze może będą..." />
     }
@@ -46,7 +46,7 @@ class Companies extends Component {
             </tr>
           </thead>
           <tbody>
-            {companies.map(company => <CompanyRow key={company.id} {...company} onDelete={this.handleDelete} />)}
+            {companies.map(company => <CompanyRow key={company.id} {...company} onDelete={this.handleDelete} admin={user.admin} />)}
           </tbody>
         </Table>
       </div>
@@ -62,15 +62,16 @@ export class CompaniesContainer extends Component {
   }
 
   render() {
-    const { companies } = this.props
+    const { companies, user } = this.props
     return (
-      <Companies companies={companies} />
+      <Companies companies={companies} user={user} />
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  companies: state.companies
+  companies: state.companies,
+  user: state.user
 })
 
 const mapDispatchToProps = {

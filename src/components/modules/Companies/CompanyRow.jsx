@@ -6,7 +6,7 @@ import { Button } from 'reactstrap'
 
 export default class CompanyRow extends Component {
   render() {
-    const { id, name, address } = this.props
+    const { id, name, address, admin } = this.props
     return (
       <tr>
         <td>{id}</td>
@@ -16,7 +16,7 @@ export default class CompanyRow extends Component {
           <Link to={`/companies/${id}`} className="btn btn-sm btn-dark m-1">
             <FontAwesomeIcon icon={['fas', 'search']} />
           </Link>
-          <Button size="sm" className="m-1" color="danger" onClick={() => this.handleDelete(id)}>
+          <Button size="sm" className="m-1" disabled={admin} color="danger" onClick={() => this.handleDelete(id)}>
             <FontAwesomeIcon icon={['fas', 'trash-alt']} />
           </Button>
         </td>
