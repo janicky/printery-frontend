@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Table } from 'reactstrap'
 
 import { request } from '../../../request'
@@ -10,7 +11,6 @@ import UserRow from '../../modules/Users/UserRow'
 
 // Import redux actions
 import { setUsers, deleteUser } from '../../../actions/users'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Users extends Component {
 
@@ -21,12 +21,12 @@ class Users extends Component {
   render() {
     const { users } = this.props
     if (users.length === 0) {
-      return <EmptyState icon={['fas', 'users']} title="Brak pracowników" message="Ale jeszcze może będą..." />
+      return <EmptyState icon={['fas', 'user-tie']} title="Brak pracowników" message="Ale jeszcze może będą..." />
     } 
     return (
       <div className="shadow-lg rounded bg-white p-4">
         <h2 className="mb-3">
-          <FontAwesomeIcon icon={['fas', 'users']} className="text-secondary mr-3" />
+          <FontAwesomeIcon icon={['fas', 'user-tie']} className="text-secondary mr-3" />
           Pracownicy
         </h2>
         <Table bordered>
