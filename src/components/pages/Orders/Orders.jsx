@@ -45,8 +45,12 @@ class Orders extends Component {
           <thead className="thead-dark">
             <tr>
               <th>#</th>
-              <th>Nazwa</th>
-              <th>Adres</th>
+              <th>Firma</th>
+              <th>Opis</th>
+              <th>Cena</th>
+              <th>Nakład</th>
+              <th>Termin</th>
+              <th>Status</th>
               <th></th>
             </tr>
           </thead>
