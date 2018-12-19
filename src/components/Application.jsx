@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Switch } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 // Import redux actions
@@ -13,6 +13,7 @@ import ProtectedLayout from './layouts/ProtectedLayout'
 import Home from './pages/Home/Home'
 import SignInContainer from './pages/SignIn/SignIn'
 import UsersContainer from './pages/Users/Users'
+import NotFound from './pages/NotFound/NotFound'
 
 // Import stylesheets
 import './Application.css'
@@ -57,6 +58,7 @@ export class Application extends Component {
             <ProtectedLayout exact path="/" component={Home} />
             <GuestLayout exact path="/login" component={SignInContainer} />
             <ProtectedLayout exact path="/users" component={UsersContainer} />
+            <Route component={NotFound} />
           </Switch>
         </div>
       </BrowserRouter>
