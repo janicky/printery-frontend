@@ -31,17 +31,17 @@ export class AddCompany extends Component {
           <FormGroup>
             <Label for="name">Nazwa klienta</Label>
             <Input invalid={errors.name} type="text" name="name" id="name" placeholder="Wprowadź nazwę klienta" innerRef={e => this.name = e}/>
-            <InputError errors={errors.name} />
+            <InputError name="Nazwa klienta" errors={errors.name} />
           </FormGroup>
           <FormGroup>
             <Label for="address">Adres</Label>
             <Input invalid={errors.address} type="text" name="address" id="address" placeholder="Wprowadź adres" innerRef={e => this.address = e} />
-            <InputError errors={errors.address} />
+            <InputError name="Adres" errors={errors.address} />
           </FormGroup>
           <FormGroup>
             <Label for="tax_number">Numer podatkowy</Label>
             <Input invalid={errors.tax_number} type="text" name="tax_number" id="tax_number" placeholder="Wprowadź numer NIP" innerRef={e => this.tax_number = e} />
-            <InputError errors={errors.tax_number} />
+            <InputError name="Numer podatkowy" errors={errors.tax_number} />
           </FormGroup>
           <div className="text-right">
             <Link to="/companies" className="btn btn-secondary mr-1">
