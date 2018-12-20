@@ -6,10 +6,11 @@ import { Row, Col } from 'reactstrap'
 import OrderBadge from '../../modules/Orders/OrderBadge'
 
 import { request } from '../../../request';
+import ActiveUser from './ActiveUser';
 
 export class Home extends Component {
   render() {
-    const { count, orders } = this.props
+    const { count, orders, users } = this.props
     return (
       <div>
         <Row>
@@ -44,6 +45,9 @@ export class Home extends Component {
             {count.in_progress > orders.length && <small className="p-2 text-secondary">oraz {count.in_progress - orders.length} innych, nowszych zleceń w trakcie realizacji</small> }
           </Col>
         </Row>
+        <Row className="mt-1">
+          {users.map(user => <ActiveUser key={user.id} {...user} />)}
+        </Row>
       </div>
     )
   }
@@ -53,6 +57,7 @@ export default class HomeContainer extends Component {
 
   state = {
     orders: [],
+    users: [],
     count: {
       not_started: 0,
       in_progress: 0,
@@ -66,13 +71,14 @@ export default class HomeContainer extends Component {
       .then(response => {
         this.setState({
           orders: response.data.orders,
+          users: response.data.users,
           count: response.data.count
         })
       })
   }
 
   render() {
-    const { count, orders } = this.state
-    return <Home count={count} orders={orders} />
+    const { count, orders, users } = this.state
+    return <Home count={count} orders={orders} users={users} />
   }
 }
