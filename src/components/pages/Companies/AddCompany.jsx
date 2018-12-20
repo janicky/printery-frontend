@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 import { request } from '../../../request';
 
+import InputError from '../../modules/InputError'
+
 export class AddCompany extends Component {
 
   handleClick = (e) => {
@@ -13,6 +15,7 @@ export class AddCompany extends Component {
   }
 
   render() {
+    const { errors } = this.props
     return (
       <div className="shadow-lg rounded bg-white p-4">
         <Row>
@@ -27,15 +30,18 @@ export class AddCompany extends Component {
         <Form>
           <FormGroup>
             <Label for="name">Nazwa klienta</Label>
-            <Input type="text" name="name" id="name" placeholder="Wprowadź nazwę klienta" innerRef={e => this.name = e}/>
+            <Input invalid={errors.name} type="text" name="name" id="name" placeholder="Wprowadź nazwę klienta" innerRef={e => this.name = e}/>
+            <InputError errors={errors.name} />
           </FormGroup>
           <FormGroup>
             <Label for="address">Adres</Label>
-            <Input type="text" name="address" id="address" placeholder="Wprowadź adres" innerRef={e => this.address = e} />
+            <Input invalid={errors.address} type="text" name="address" id="address" placeholder="Wprowadź adres" innerRef={e => this.address = e} />
+            <InputError errors={errors.address} />
           </FormGroup>
           <FormGroup>
             <Label for="tax_number">Numer podatkowy</Label>
-            <Input type="text" name="tax_number" id="tax_number" placeholder="Wprowadź numer NIP" innerRef={e => this.tax_number = e} />
+            <Input invalid={errors.tax_number} type="text" name="tax_number" id="tax_number" placeholder="Wprowadź numer NIP" innerRef={e => this.tax_number = e} />
+            <InputError errors={errors.tax_number} />
           </FormGroup>
           <div className="text-right">
             <Link to="/companies" className="btn btn-secondary mr-1">
