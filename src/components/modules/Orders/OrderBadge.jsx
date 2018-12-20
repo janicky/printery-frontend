@@ -23,7 +23,7 @@ export default class OrderBadge extends Component {
             {count} szt.
           </Col>
           <Col xs="4">
-            <small>termin {moment(deadline).lang('pl').fromNow()}</small>
+            <small>termin {moment(deadline).fromNow()}</small>
           </Col>
         </Row>
       </div>
