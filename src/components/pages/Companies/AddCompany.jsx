@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap'
+import { Row, Col, Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
@@ -14,8 +14,12 @@ export class AddCompany extends Component {
     this.props.onSubmit(this.name.value, this.address.value, this.tax_number.value)
   }
 
+  resetForm = () => {
+    this.form.reset()
+  }
+
   render() {
-    const { errors } = this.props
+    const { errors, message } = this.props
     return (
       <div className="shadow-lg rounded bg-white p-4">
         <Row>
@@ -27,7 +31,8 @@ export class AddCompany extends Component {
           </Col>
         </Row>
         <hr/>
-        <Form>
+        { message && <Alert color="success">{message}</Alert> }
+        <Form innerRef={e => this.form = e}>
           <FormGroup>
             <Label for="name">Nazwa klienta</Label>
             <Input invalid={errors.name} type="text" name="name" id="name" placeholder="Wprowadź nazwę klienta" innerRef={e => this.name = e}/>
@@ -60,17 +65,19 @@ export class AddCompany extends Component {
 export default class AddCompanyContainer extends Component {
 
   state = {
-    errors: []
+    errors: [],
+    message: null
   }
 
   handleSubmit = (name, address, tax_number) => {
     request.post('companies', { name, address, tax_number })
       .then(response => {
-        console.log(response)
+        this.setState({ errors: [], message: `Pomyślnie dodano ${response.data.name}` })
+        this.child.resetForm()
       })
       .catch(error => {
         const response = error.response
-        if (response.data.errors) {
+        if (response && response.data && response.data.errors) {
           this.setState({ errors: response.data.errors })
         } else {
           alert('Nie udało się utworzyć nowego klienta')
@@ -79,7 +86,7 @@ export default class AddCompanyContainer extends Component {
   }
 
   render() {
-    const { errors } = this.state
-    return <AddCompany onSubmit={this.handleSubmit} errors={errors} />
+    const { errors, message } = this.state
+    return <AddCompany onSubmit={this.handleSubmit} errors={errors} message={message} ref={e => this.child = e } />
   }
 }
