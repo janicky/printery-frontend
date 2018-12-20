@@ -39,7 +39,7 @@ export class Home extends Component {
             <h5>Zlecenia w trakcie realizacji</h5>
             <hr/>
             <div>
-              {orders.map(order => <OrderBadge {...order} />)}
+              {orders.map(order => <OrderBadge key={order.id} {...order} />)}
             </div>
             {count.in_progress > orders.length && <small className="p-2 text-secondary">oraz {count.in_progress - orders.length} innych, nowszych zleceń w trakcie realizacji</small> }
           </Col>
