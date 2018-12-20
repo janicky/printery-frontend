@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Status from '../../modules/Orders/Status'
 
@@ -23,6 +25,11 @@ export default class OrderRow extends Component {
         <td>{deadline}</td>
         <td>
           <Status status={status} />
+        </td>
+        <td>
+          <Link to={`/orders/${id}`} className="btn btn-sm btn-secondary">
+            <FontAwesomeIcon icon={['fas', 'cogs']} />
+          </Link>
         </td>
       </tr>
     )

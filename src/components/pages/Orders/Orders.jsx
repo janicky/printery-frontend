@@ -31,13 +31,13 @@ class Orders extends Component {
         <Row>
           <Col className="mb-3">
             <h2>
-              <FontAwesomeIcon icon={['fas', 'users']} className="text-secondary mr-3" />
-              Klienci
+              <FontAwesomeIcon icon={['fas', 'folder']} className="text-secondary mr-3" />
+              Zlecenia
             </h2>
           </Col>
           <Col className="text-right">
             <Link to="/orders/add" className="btn btn-success">
-              <FontAwesomeIcon icon={['fas', 'plus']} className="mr-1" /> Dodaj nowego klienta
+              <FontAwesomeIcon icon={['fas', 'play']} className="mr-1" /> Rozpocznij nowe zlecenie
             </Link>
           </Col>
         </Row>
