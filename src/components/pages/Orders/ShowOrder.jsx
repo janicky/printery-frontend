@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { request } from '../../../request'
 
 import EmptyState from '../../modules/EmptyState'
-import { request } from '../../../request'
+import Operations from '../../modules/Operations/Operations'
 
 import { Table, Row, Col } from 'reactstrap'
 
@@ -101,6 +102,7 @@ export class Order extends Component {
             </Table>
           </Col>
         </Row>
+        <Operations operations={order.operations} />
       </div>
     )
   }
