@@ -15,6 +15,7 @@ import SignInContainer from './pages/SignIn/SignIn'
 import OrdersContainer from './pages/Orders/Orders'
 import UsersContainer from './pages/Users/Users'
 import AddCompanyContainer from './pages/Companies/AddCompany'
+import ShowCompanyContainer from './pages/Companies/ShowCompany'
 import CompaniesContainer from './pages/Companies/Companies'
 
 import NotFound from './pages/NotFound/NotFound'
@@ -65,6 +66,7 @@ export class Application extends Component {
             <ProtectedLayout exact path="/users" component={UsersContainer} />
             <ProtectedLayout exact path="/companies" component={CompaniesContainer} />
             <ProtectedLayout exact path="/companies/add" component={AddCompanyContainer} />
+            <ProtectedLayout exact path="/companies/:id" component={ShowCompanyContainer} />
             <Route component={NotFound} />
           </Switch>
         </div>
