@@ -4,6 +4,7 @@ import { request } from '../../../request'
 
 import EmptyState from '../../modules/EmptyState'
 import Operations from '../../modules/Operations/Operations'
+import Status from '../../modules/Orders/Status'
 
 import { Table, Row, Col } from 'reactstrap'
 
@@ -35,6 +36,12 @@ export class Order extends Component {
               <tr>
                 <th>Opis</th>
                 <td>{order.description}</td>
+              </tr>
+              <tr>
+                <th>Status</th>
+                <td>
+                  <Status status={order.status} />
+                </td>
               </tr>
               <tr>
                 <th>Nakład</th>
